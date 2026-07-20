@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash Master | Senior Data Engineer</title>
+<meta name="description" content="Yash Master, Senior Data Engineer with 7+ years building Databricks and Lakehouse data platforms, including feature infrastructure for Disney+/Hulu at 200M+ daily users and a 112-partner enrollment data migration at Risepoint.">
+<meta property="og:title" content="Yash Master | Senior Data Engineer">
+<meta property="og:description" content="Databricks, Unity Catalog, dbt, and Lakehouse architecture, from Disney+/Hulu feature platforms to a 112-partner data migration.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161a'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23d8af3d' text-anchor='middle'%3EYM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14161a;
+    --bg-2: #191c21;
+    --panel: #1d2025;
+    --panel-2: #22262c;
+    --border: rgba(236,234,228,0.09);
+    --border-strong: rgba(236,234,228,0.16);
+    --text: #ece9e2;
+    --text-dim: #a3a8b1;
+    --text-mute: #6d7280;
+    --bronze: #b8733f;
+    --bronze-soft: rgba(184,115,63,0.14);
+    --silver: #c3c9d3;
+    --silver-soft: rgba(195,201,211,0.12);
+    --gold: #d8af3d;
+    --gold-soft: rgba(216,175,61,0.14);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: radial-gradient(ellipse 1200px 600px at 15% -10%, rgba(184,115,63,0.08), transparent),
+                radial-gradient(ellipse 1000px 500px at 100% 10%, rgba(216,175,61,0.06), transparent),
+                var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  :focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Refinement rail (signature element) ---------- */
+  .rail{
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--bronze) 0%, var(--bronze) 30%, var(--silver) 30%, var(--silver) 65%, var(--gold) 65%, var(--gold) 100%);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky; top: 4px; z-index: 40;
+    background: rgba(20,22,26,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding: 16px 32px; }
+  .nav-mark{ font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; color: var(--text-dim); }
+  .nav-mark b{ color: var(--gold); font-weight: 600; }
+  .nav-links{ display:flex; gap: 28px; list-style:none; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; }
+  .nav-links a{ color: var(--text-dim); text-decoration:none; transition: color .2s; }
+  .nav-links a:hover{ color: var(--gold); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--border-strong); border-radius:6px; width:36px; height:32px; cursor:pointer; position:relative; }
+  .nav-toggle span{ position:absolute; left:8px; right:8px; height:1.5px; background: var(--text-dim); transition: transform .2s, opacity .2s; }
+  .nav-toggle span:nth-child(1){ top:11px; }
+  .nav-toggle span:nth-child(2){ top:17px; }
+  .nav-toggle span:nth-child(3){ top:23px; }
+  .nav-toggle.open span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity:0; }
+  .nav-toggle.open span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+  @media (max-width: 640px){
+    .nav-links{
+      display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0;
+      background: var(--bg-2); border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open{ display:flex; }
+    .nav-links a{ display:block; padding:14px 32px; border-top: 1px solid var(--border); }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero{ padding: 96px 0 72px; }
+  .eyebrow{
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--bronze); display:flex; align-items:center; gap: 10px; margin-bottom: 22px;
+  }
+  .eyebrow::before{ content:''; width: 24px; height: 1px; background: var(--bronze); }
+
+  h1{
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.04; letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  h1 .accent{
+    background: linear-gradient(90deg, var(--bronze), var(--gold));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .role-line{
+    font-family: var(--display); font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: var(--text-dim); margin-top: 14px; font-weight: 500;
+  }
+
+  .thesis{
+    max-width: 640px; margin-top: 26px; font-size: 16.5px; color: var(--text-dim);
+  }
+  .thesis b{ color: var(--text); font-weight: 600; }
+
+  .stat-row{
+    display:flex; flex-wrap: wrap; gap: 0; margin-top: 48px;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .stat{
+    flex: 1 1 160px; padding: 20px 24px 20px 0; border-right: 1px solid var(--border);
+  }
+  .stat:last-child{ border-right: none; }
+  .stat .n{ font-family: var(--mono); font-size: 1.7rem; font-weight: 600; color: var(--gold); }
+  .stat .l{ font-size: 12.5px; color: var(--text-mute); margin-top: 4px; letter-spacing: 0.02em; }
+
+  .contact-row{ display:flex; flex-wrap:wrap; gap: 14px; margin-top: 32px; }
+  .pill{
+    font-family: var(--mono); font-size: 12.5px; padding: 9px 16px; border-radius: 30px;
+    border: 1px solid var(--border-strong); color: var(--text-dim); text-decoration:none;
+    transition: all .2s; display:inline-flex; align-items:center; gap:7px;
+  }
+  .pill:hover{ border-color: var(--gold); color: var(--gold); }
+  .pill.solid{ background: var(--gold); color: #171310; border-color: var(--gold); font-weight: 600; }
+  .pill.solid:hover{ opacity: 0.88; color:#171310; }
+
+  /* ---------- Section framing ---------- */
+  section{ padding: 88px 0; border-top: 1px solid var(--border); }
+  .section-head{ margin-bottom: 48px; }
+  .section-num{ font-family: var(--mono); font-size: 12.5px; color: var(--text-mute); letter-spacing: 0.1em; }
+  .section-title{ font-family: var(--display); font-size: clamp(1.6rem, 3.4vw, 2.2rem); font-weight: 600; margin-top: 8px; }
+  .section-sub{ color: var(--text-dim); margin-top: 10px; max-width: 560px; font-size: 15px; }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1.5fr 1fr; gap: 56px; }
+  .about-grid p{ color: var(--text-dim); font-size: 15.5px; margin-bottom: 16px; }
+  .about-grid p:last-child{ margin-bottom: 0; }
+  .about-grid b{ color: var(--text); font-weight: 600; }
+  .edu-box{ background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 24px; height: fit-content; }
+  .edu-box h4{ font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 16px; }
+  .edu-item{ margin-bottom: 16px; }
+  .edu-item:last-child{ margin-bottom: 0; }
+  .edu-item .deg{ font-size: 14px; font-weight: 600; color: var(--text); }
+  .edu-item .sch{ font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+  .edu-item .yr{ font-family: var(--mono); font-size: 11.5px; color: var(--text-mute); margin-top: 2px; }
+  @media (max-width: 780px){ .about-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- Refinement timeline (experience) ---------- */
+  .layer-key{ display:flex; gap: 22px; margin-bottom: 40px; flex-wrap: wrap; }
+  .layer-key span{ display:flex; align-items:center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--text-mute); }
+  .dot{ width: 9px; height: 9px; border-radius: 50%; display:inline-block; }
+  .dot.gold{ background: var(--gold); }
+  .dot.silver{ background: var(--silver); }
+  .dot.bronze{ background: var(--bronze); }
+
+  .timeline{ position: relative; padding-left: 28px; }
+  .timeline::before{
+    content:''; position:absolute; left: 5px; top: 6px; bottom: 6px; width: 2px;
+    background: linear-gradient(180deg, var(--gold), var(--silver) 55%, var(--bronze));
+  }
+  .job{ position: relative; padding-bottom: 52px; }
+  .job:last-child{ padding-bottom: 0; }
+  .job::before{
+    content:''; position:absolute; left: -28px; top: 4px; width: 12px; height: 12px; border-radius: 50%;
+    border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--border-strong);
+  }
+  .job.gold::before{ background: var(--gold); }
+  .job.silver::before{ background: var(--silver); }
+  .job.bronze::before{ background: var(--bronze); }
+
+  .job-head{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap: 8px; margin-bottom: 6px; }
+  .job-title{ font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
+  .job-title .co{ color: var(--text-dim); font-weight: 500; }
+  .job-date{ font-family: var(--mono); font-size: 12.5px; color: var(--text-mute); white-space: nowrap; }
+  .job-loc{ font-size: 12.5px; color: var(--text-mute); margin-bottom: 14px; }
+  .layer-tag{
+    display:inline-block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 4px; margin-bottom: 12px;
+  }
+  .layer-tag.gold{ background: var(--gold-soft); color: var(--gold); }
+  .layer-tag.silver{ background: var(--silver-soft); color: var(--silver); }
+  .layer-tag.bronze{ background: var(--bronze-soft); color: var(--bronze); }
+
+  .job ul{ list-style: none; }
+  .job li{ position: relative; padding-left: 18px; font-size: 14.5px; color: var(--text-dim); margin-bottom: 9px; }
+  .job li::before{ content:'–'; position:absolute; left:0; color: var(--text-mute); }
+  .job li:last-child{ margin-bottom: 0; }
+
+  /* ---------- Achievements ---------- */
+  .achieve-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .achieve-card{
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+    transition: border-color .2s, transform .2s;
+  }
+  .achieve-card:hover{ border-color: var(--border-strong); transform: translateY(-2px); }
+  .achieve-card .metric{ font-family: var(--mono); font-size: 1.5rem; font-weight: 600; color: var(--gold); margin-bottom: 10px; }
+  .achieve-card p{ font-size: 13.5px; color: var(--text-dim); }
+  @media (max-width: 780px){ .achieve-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px){ .achieve-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- Selected Work (case studies) ---------- */
+  .case-list{ display:flex; flex-direction:column; gap: 28px; }
+  .case-card{
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    padding: 36px; transition: border-color .2s;
+  }
+  .case-card:hover{ border-color: var(--border-strong); }
+  .case-top{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom: 6px; }
+  .case-title{ font-family: var(--display); font-size: 1.3rem; font-weight: 600; }
+  .case-title .co{ color: var(--text-dim); font-weight: 500; }
+  .case-tag{
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 4px; white-space: nowrap;
+  }
+  .case-tag.gold{ background: var(--gold-soft); color: var(--gold); }
+  .case-tag.silver{ background: var(--silver-soft); color: var(--silver); }
+  .case-grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; margin-top: 22px; }
+  .case-block h5{
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--bronze); margin-bottom: 8px;
+  }
+  .case-block p{ font-size: 14.5px; color: var(--text-dim); }
+  .case-impact{ list-style: none; grid-column: 1 / -1; }
+  .case-impact li{ position:relative; padding-left: 18px; font-size: 14.5px; color: var(--text-dim); margin-bottom: 7px; }
+  .case-impact li::before{ content:'\2013'; position:absolute; left:0; color: var(--gold); }
+  .case-impact li:last-child{ margin-bottom: 0; }
+  .case-stack{ display:flex; flex-wrap:wrap; gap: 7px; margin-top: 22px; }
+  @media (max-width: 780px){ .case-grid2{ grid-template-columns: 1fr; } .case-card{ padding: 26px; } }
+
+  /* ---------- Projects ---------- */
+  .project-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .project-card{
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+    display:flex; flex-direction:column; transition: border-color .2s, transform .2s;
+  }
+  .project-card:hover{ border-color: var(--border-strong); transform: translateY(-2px); }
+  .project-head{ display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-bottom: 10px; }
+  .project-title{ font-family: var(--display); font-size: 1.05rem; font-weight: 600; }
+  .project-link{ font-family: var(--mono); font-size: 12px; color: var(--gold); text-decoration:none; white-space:nowrap; }
+  .project-link:hover{ text-decoration: underline; }
+  .project-card p{ font-size: 14px; color: var(--text-dim); margin-bottom: 16px; flex-grow: 1; }
+  @media (max-width: 700px){ .project-grid{ grid-template-columns: 1fr; } }
+
+  /* ---------- Skills ---------- */
+  .skill-groups{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+  .skill-group h4{
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--bronze); margin-bottom: 12px;
+  }
+  .chip-row{ display:flex; flex-wrap: wrap; gap: 8px; }
+  .chip{
+    font-family: var(--mono); font-size: 12px; padding: 6px 12px; border-radius: 6px;
+    background: var(--panel-2); border: 1px solid var(--border); color: var(--text-dim);
+  }
+  @media (max-width: 700px){ .skill-groups{ grid-template-columns: 1fr; } }
+
+  /* ---------- Certifications ---------- */
+  .cert-list{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .cert{
+    display:flex; justify-content:space-between; align-items:center; gap: 12px;
+    padding: 16px 18px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration:none; transition: border-color .2s;
+  }
+  .cert:hover{ border-color: var(--gold); }
+  .cert .name{ font-size: 13.5px; font-weight: 600; color: var(--text); }
+  .cert .issuer{ font-size: 12px; color: var(--text-mute); margin-top: 2px; }
+  .cert .arrow{ color: var(--gold); font-family: var(--mono); font-size: 14px; }
+  @media (max-width: 700px){ .cert-list{ grid-template-columns: 1fr; } }
+
+  /* ---------- Footer / Contact ---------- */
+  footer{ padding: 88px 0 60px; }
+  .footer-inner{ text-align: center; }
+  .footer-eyebrow{ font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em; color: var(--text-mute); text-transform: uppercase; }
+  footer h2{
+    font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 18px 0 30px; letter-spacing: -0.01em;
+  }
+  .footer-links{ display:flex; justify-content:center; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
+  .foot-meta{ text-align:center; font-family: var(--mono); font-size: 11.5px; color: var(--text-mute); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .achieve-card{ transition: none; }
+  }
+
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="rail"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">YASH MASTER <b>/</b> DATA ENGINEERING</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Senior Data Engineer, New Jersey</div>
+    <h1>Turning raw data<br>into <span class="accent">governed gold.</span></h1>
+    <div class="role-line">Yash Master</div>
+    <p class="thesis">
+      7+ years owning the full lifecycle of enterprise data platforms, from raw ingestion
+      through the <b>metric a business team actually reports on</b>. Currently leading
+      Risepoint's Databricks Unity Catalog Lakehouse migration for 112 university partners.
+      Previously built feature infrastructure at <b>Disney</b> serving 200M+ daily users
+      across Disney+ and Hulu.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="n">7+</div><div class="l">Years in data engineering</div></div>
+      <div class="stat"><div class="n">200M+</div><div class="l">Daily users served (Disney+/Hulu)</div></div>
+      <div class="stat"><div class="n">112</div><div class="l">University partners (Risepoint)</div></div>
+      <div class="stat"><div class="n">10.6M+</div><div class="l">Rows in production star schema</div></div>
+    </div>
+
+    <div class="contact-row">
+      <a class="pill solid" href="mailto:masteryash522@gmail.com">Email me</a>
+      <a class="pill" href="Yash_Master_Resume.pdf" target="_blank" rel="noopener">Download Resume &#8595;</a>
+      <a class="pill" href="https://www.linkedin.com/in/yash-master/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="pill" href="https://github.com/yash-master" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="pill" href="tel:2033924677">203-392-4677</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">01 / About</div>
+      <div class="section-title">The full pipeline, end to end</div>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p>
+          I'm a data engineer who's comfortable owning a project from raw ingestion through
+          the dashboard a VP screenshots in a board meeting. At <b>Risepoint</b>, that means
+          replacing undocumented legacy enrollment logic with version-controlled dbt macros
+          and a governed semantic layer spanning 112 university partners, so nobody re-derives
+          the same metric three different ways in three different reports.
+        </p>
+        <p>
+          Before that, I spent three years at <b>Disney</b> on the Quantum feature platform,
+          architecting and migrating feature-engineering infrastructure for Disney+ and Hulu
+          at petabyte scale, and building a new feature mart from scratch to support Hulu
+          content launching on Disney+.
+        </p>
+        <p>
+          My background spans lakehouse architecture, streaming, embedded systems, and
+          classic ETL, which mostly means I've seen data in nearly every shape it comes in,
+          and I know which shape it needs to be in before someone downstream can trust it.
+        </p>
+      </div>
+      <div class="edu-box">
+        <h4>Education</h4>
+        <div class="edu-item">
+          <div class="deg">MBA</div>
+          <div class="sch">University of the Cumberlands</div>
+          <div class="yr">2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="deg">M.S., Electrical & Computer Engineering</div>
+          <div class="sch">University of New Haven</div>
+          <div class="yr">2020</div>
+        </div>
+        <div class="edu-item">
+          <div class="deg">B.S., Electrical & Computer Engineering</div>
+          <div class="sch">Pandit Deendayal Energy University</div>
+          <div class="yr">2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">02 / Experience</div>
+      <div class="section-title">Career, refined like the pipelines I build</div>
+      <p class="section-sub">
+        Bronze is raw and foundational. Silver is transformation at scale. Gold is governed
+        and business-ready. My own trajectory has followed the same arc.
+      </p>
+    </div>
+
+    <div class="layer-key reveal">
+      <span><i class="dot gold"></i> Gold: governed, business-ready</span>
+      <span><i class="dot silver"></i> Silver: transformation at scale</span>
+      <span><i class="dot bronze"></i> Bronze: raw & foundational</span>
+    </div>
+
+    <div class="timeline">
+      <div class="job gold reveal">
+        <span class="layer-tag gold">Gold layer</span>
+        <div class="job-head">
+          <div class="job-title">Senior Data Engineer <span class="co">· Risepoint</span></div>
+          <div class="job-date">Apr 2026–Present</div>
+        </div>
+        <div class="job-loc">New York City Metropolitan Area</div>
+        <ul>
+          <li>Own end-to-end migration of enrollment data for 112 university partners onto a governed Databricks Unity Catalog Lakehouse, replacing a legacy system with no version control or lineage.</li>
+          <li>Engineer Python-based API integration jobs ingesting daily batch data from 15 partner source systems into the Unity Catalog bronze layer.</li>
+          <li>Deliver an end-to-end Bronze-to-Silver-to-Gold dbt pipeline, including a dimensional Gold model with full lineage.</li>
+          <li>Design a semantic layer across all partners, programs, courses, and enrollments, defining governed metrics so reporting no longer re-derives logic ad hoc.</li>
+          <li>Implement watermark-based incremental loads carrying ingestion run ID and timestamp for full lineage and replay.</li>
+          <li>Build data quality dashboards with sentinel-aware orphan FK checks and duplicate enrollment detection.</li>
+          <li>Apply Unity Catalog access controls supporting FERPA-compliant handling of student data across a shared multi-tenant Lakehouse.</li>
+        </ul>
+      </div>
+
+      <div class="job silver reveal">
+        <span class="layer-tag silver">Silver layer</span>
+        <div class="job-head">
+          <div class="job-title">Data & Analytics Engineer <span class="co">· Disney</span></div>
+          <div class="job-date">Mar 2023–Apr 2026</div>
+        </div>
+        <div class="job-loc">New York City Metropolitan Area</div>
+        <ul>
+          <li>Owned feature-engineering pipeline work across three major initiatives on Disney+ and Hulu's Quantum platform, serving 200M+ daily active and cancel users at petabyte scale.</li>
+          <li>Led migration of Hulu's legacy on-prem batch feature pipelines to a Databricks and S3 Delta Lake architecture.</li>
+          <li>Delivered a new feature mart from scratch supporting Hulu content becoming available on Disney+ (2024), processing an estimated 60–70M daily users.</li>
+          <li>Modernized Hulu's near-real-time recommendation pipeline onto a cloud-based Kafka and Spark architecture.</li>
+          <li>Engineered ETL pipelines and API services for feature management, orchestrated with Airflow, feeding S3 Delta and Hive tables.</li>
+          <li>Set up PagerDuty monitoring, cutting incident resolution time ~35%; optimized Spark cluster configs, lowering compute cost ~30%.</li>
+          <li>Led removal of children's profiles across Disney+ and Hulu for data governance and legal compliance.</li>
+        </ul>
+      </div>
+
+      <div class="job silver reveal">
+        <span class="layer-tag silver">Silver layer</span>
+        <div class="job-head">
+          <div class="job-title">Data Engineer <span class="co">· Accelerant</span></div>
+          <div class="job-date">Feb 2022–Mar 2023</div>
+        </div>
+        <div class="job-loc">New York City Metropolitan Area</div>
+        <ul>
+          <li>Led migration of insurance partner data pipelines from on-prem systems to Azure, building Azure Data Factory pipelines to orchestrate ETL across partner sources.</li>
+          <li>Wrote PySpark and Spark SQL applications to transform and aggregate insurance partner data for customer-facing analytics.</li>
+          <li>Deployed and scaled ML models on Azure ML Studio, then migrated serving infrastructure to Azure Kubernetes Service.</li>
+          <li>Migrated backend services from Kubernetes to Azure Container Apps, reducing operational overhead.</li>
+          <li>Set up CI/CD pipelines in Azure DevOps for faster, more reliable releases.</li>
+        </ul>
+      </div>
+
+      <div class="job bronze reveal">
+        <span class="layer-tag bronze">Bronze layer</span>
+        <div class="job-head">
+          <div class="job-title">Software Engineer <span class="co">· ELK Products</span></div>
+          <div class="job-date">Mar 2020–Feb 2022</div>
+        </div>
+        <div class="job-loc">Hickory, North Carolina</div>
+        <ul>
+          <li>Developed embedded control-system software in C/C++, Python, and Java for connected hardware devices.</li>
+          <li>Integrated AWS IoT Core for reliable device-to-cloud communication.</li>
+          <li>Established structured error-handling and firmware standards adopted across the embedded codebase.</li>
+          <li>Tested and debugged software across the full product lifecycle prior to release.</li>
+        </ul>
+      </div>
+
+      <div class="job bronze reveal">
+        <span class="layer-tag bronze">Bronze layer</span>
+        <div class="job-head">
+          <div class="job-title">Engineering Intern <span class="co">· MCS</span></div>
+          <div class="job-date">Jun 2016–Dec 2017</div>
+        </div>
+        <div class="job-loc">Hyderabad, Telangana, India</div>
+        <ul>
+          <li>Built SSIS packages to extract, transform, and load data from OLEDB, flat files, and FTP/SFTP sources into a SQL Server data warehouse.</li>
+          <li>Designed stored procedures, functions, views, and tables to support new business logic.</li>
+          <li>Automated data workflows with scheduled batch jobs and SSIS/SSRS reporting.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">03 / Selected Work</div>
+      <div class="section-title">Two systems, told in full</div>
+      <p class="section-sub">
+        The experience section above is the log. These two are the story behind the two
+        biggest builds: what was broken, what I did about it, and what changed.
+      </p>
+    </div>
+
+    <div class="case-list reveal">
+      <div class="case-card">
+        <div class="case-top">
+          <div class="case-title">Enrollment Data Lakehouse Migration <span class="co">&middot; Risepoint</span></div>
+          <span class="case-tag gold">Current</span>
+        </div>
+        <div class="case-grid2">
+          <div class="case-block">
+            <h5>Problem</h5>
+            <p>112 university partners' enrollment data lived in a legacy system with no version control and no lineage. Business rules like census survival, melt, and billing eligibility were implemented ad hoc, so the same metric could be re-derived three different ways in three different reports, and nobody could say which one was right.</p>
+          </div>
+          <div class="case-block">
+            <h5>Approach</h5>
+            <p>Designed a Bronze-to-Silver-to-Gold dbt pipeline on Databricks Unity Catalog: Python API jobs land raw data in Bronze, 12 version-controlled dbt macros centralize the business logic in Silver, and a Gold dimensional model (fact_course_enrollment plus 8 conformed dimensions) feeds a semantic layer that defines every enrollment metric exactly once.</p>
+          </div>
+          <ul class="case-impact">
+            <li>10.6M+ rows now under governance across 112 partners, with SHA-256 surrogate keys and sentinel-aware FK resolution replacing NULL-dependent legacy patterns.</li>
+            <li>One governed definition per metric (new, melted, billed, month-end active) instead of three inconsistent ones per report.</li>
+            <li>Full lineage and replay capability via watermark-based incremental loads carrying ingestion run ID and timestamp end-to-end.</li>
+          </ul>
+        </div>
+        <div class="case-stack">
+          <span class="chip">Databricks</span><span class="chip">Unity Catalog</span><span class="chip">dbt</span><span class="chip">Delta Lake</span><span class="chip">Python</span><span class="chip">PySpark</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-top">
+          <div class="case-title">Quantum Feature Platform <span class="co">&middot; Disney</span></div>
+          <span class="case-tag silver">2023&ndash;2026</span>
+        </div>
+        <div class="case-grid2">
+          <div class="case-block">
+            <h5>Problem</h5>
+            <p>Hulu's feature-engineering pipelines ran on legacy on-prem infrastructure that wasn't built for 200M+ daily active and cancel users. There was no feature infrastructure at all yet for Hulu content newly launching inside the Disney+ app.</p>
+          </div>
+          <div class="case-block">
+            <h5>Approach</h5>
+            <p>Owned pipeline work across three initiatives on the Quantum feature platform: migrated Hulu's legacy batch feature pipelines onto Databricks and S3 Delta Lake, built a new feature mart from scratch for Hulu-on-Disney+ content, and modernized the near-real-time recommendation pipeline onto Kafka and Spark.</p>
+          </div>
+          <ul class="case-impact">
+            <li>Feature infrastructure serving real-time personalization and offline model training for 200M+ daily users at petabyte scale.</li>
+            <li>New feature mart processing an estimated 60&ndash;70M daily users end to end on Databricks.</li>
+            <li>~35% faster incident resolution after standing up PagerDuty; ~30% lower compute cost after tuning Spark cluster configs.</li>
+          </ul>
+        </div>
+        <div class="case-stack">
+          <span class="chip">Databricks</span><span class="chip">Spark</span><span class="chip">Kafka</span><span class="chip">Flink</span><span class="chip">HBase</span><span class="chip">AWS</span><span class="chip">Airflow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">04 / Impact</div>
+      <div class="section-title">Numbers that made it into someone else's report</div>
+    </div>
+    <div class="achieve-grid reveal">
+      <div class="achieve-card">
+        <div class="metric">10.6M+ rows</div>
+        <p>Production star schema (fact_course_enrollment plus 8 conformed dimensions) spanning 112 university partners, using SHA-256 surrogate keys and sentinel-aware FK resolution.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="metric">12 macros</div>
+        <p>Centralized complex enrollment rules (census survival, 365-day re-enrollment, melt, billing eligibility) into reusable, version-controlled dbt macros.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="metric">200M+ users</div>
+        <p>Migrated Hulu's legacy on-prem feature pipelines to a Databricks and S3 Delta Lake architecture, supporting active- and cancel-user processing at this scale.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="metric">60–70M users</div>
+        <p>Architected a new feature mart from scratch to support Hulu content becoming available on Disney+, end to end on Databricks.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="metric">~35% faster</div>
+        <p>Incident resolution time after standing up PagerDuty monitoring for production pipelines serving Disney+ and Hulu.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="metric">~30% lower</div>
+        <p>Compute cost after optimizing on-prem Spark cluster configurations, while also improving job throughput.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">05 / Projects</div>
+      <div class="section-title">Outside the day job</div>
+      <p class="section-sub">Smaller builds, done for the sake of learning the tool, not the ticket.</p>
+    </div>
+    <div class="project-grid reveal">
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Airbnb Price Prediction</div>
+          <a class="project-link" href="https://github.com/yash-master/Airbnb-prediction-analysis" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+        <p>Regression model to predict optimal Airbnb listing prices. Cleaned and explored the data, engineered features, and landed at 97% accuracy in Python.</p>
+        <div class="case-stack">
+          <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">scikit-learn</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Twitter Data Pipeline</div>
+          <a class="project-link" href="https://github.com/yash-master/Twitter-data-pipeline" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+        <p>Automated pipeline using the Tweepy API to pull tweet, engagement, and user data, orchestrated with Airflow and landed in Amazon S3.</p>
+        <div class="case-stack">
+          <span class="chip">Python</span><span class="chip">Tweepy</span><span class="chip">Airflow</span><span class="chip">AWS S3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">06 / Stack</div>
+      <div class="section-title">The tools behind the pipeline</div>
+    </div>
+    <div class="skill-groups reveal">
+      <div class="skill-group">
+        <h4>Lakehouse & Governance</h4>
+        <div class="chip-row">
+          <span class="chip">Databricks</span><span class="chip">Unity Catalog</span><span class="chip">Delta Lake</span><span class="chip">dbt</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Orchestration & Transformation</h4>
+        <div class="chip-row">
+          <span class="chip">Airflow</span><span class="chip">PySpark</span><span class="chip">Spark SQL</span><span class="chip">ELT / ETL Design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Streaming & Real-Time</h4>
+        <div class="chip-row">
+          <span class="chip">Kafka</span><span class="chip">Flink</span><span class="chip">Spark Streaming</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Cloud Platforms</h4>
+        <div class="chip-row">
+          <span class="chip">AWS (S3, Lambda, Glue, EMR, Redshift)</span><span class="chip">Azure (ADF, Data Lake, DevOps)</span><span class="chip">GCP (BigQuery, Dataproc, Dataflow)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Databases & Warehousing</h4>
+        <div class="chip-row">
+          <span class="chip">Snowflake</span><span class="chip">Teradata</span><span class="chip">Oracle</span><span class="chip">MongoDB</span><span class="chip">Cassandra</span><span class="chip">HBase</span><span class="chip">Hadoop / Hive / HDFS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>CI/CD & DevOps</h4>
+        <div class="chip-row">
+          <span class="chip">Azure DevOps</span><span class="chip">GitHub</span><span class="chip">Jenkins</span><span class="chip">Docker</span><span class="chip">Kubernetes</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>BI & Analytics</h4>
+        <div class="chip-row">
+          <span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Google Analytics</span><span class="chip">Adobe Analytics</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">PySpark</span><span class="chip">Scala</span><span class="chip">Java</span><span class="chip">Bash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">07 / Certifications</div>
+      <div class="section-title">Recent, verified</div>
+    </div>
+    <div class="cert-list reveal">
+      <a class="cert" href="https://www.coursera.org/account/accomplishments/verify/LXH7PLFE2ELK" target="_blank" rel="noopener">
+        <div><div class="name">Snowflake for Data</div><div class="issuer">Snowflake · 2025</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="cert" href="https://www.coursera.org/account/accomplishments/verify/1AN3PBB6IVR4" target="_blank" rel="noopener">
+        <div><div class="name">Data Analysis with Python</div><div class="issuer">IBM · 2025</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="cert" href="https://www.coursera.org/account/accomplishments/verify/7GQ0WAT7L4CB" target="_blank" rel="noopener">
+        <div><div class="name">Data Visualization with Tableau</div><div class="issuer">Tableau · 2025</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="cert" href="https://www.hackerrank.com/certificates/4f8d777e9acc" target="_blank" rel="noopener">
+        <div><div class="name">SQL Advanced</div><div class="issuer">HackerRank · 2025</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="cert" href="https://www.coursera.org/account/accomplishments/verify/ML9XR9RH14PB" target="_blank" rel="noopener">
+        <div><div class="name">Google AI Essentials</div><div class="issuer">Google · 2025</div></div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-inner reveal">
+    <div class="footer-eyebrow">08 / Get in touch</div>
+    <h2>Let's ship the<br>next pipeline.</h2>
+    <div class="footer-links">
+      <a class="pill solid" href="mailto:masteryash522@gmail.com">masteryash522@gmail.com</a>
+      <a class="pill" href="https://www.linkedin.com/in/yash-master/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="pill" href="https://github.com/yash-master" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="pill" href="tel:2033924677">203-392-4677</a>
+    </div>
+    <div class="foot-meta">YASH MASTER · SENIOR DATA ENGINEER · NEW JERSEY</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
