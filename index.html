@@ -616,6 +616,36 @@
     <div class="project-grid reveal">
       <div class="project-card">
         <div class="project-head">
+          <div class="project-title">Enrollment Lakehouse (dbt)</div>
+          <a class="project-link" href="https://github.com/yash-master/dbt-project" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+        <p>Dimensional dbt project modeling university-partner enrollment data end to end: staging &rarr; intermediate &rarr; marts, sentinel-aware foreign keys, and a governed metrics layer (new/melted/billed/active), runnable locally on DuckDB.</p>
+        <div class="case-stack">
+          <span class="chip">dbt</span><span class="chip">DuckDB</span><span class="chip">dbt_utils</span><span class="chip">GitHub Actions</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Streaming Feature Store</div>
+          <a class="project-link" href="https://github.com/yash-master/data-platform" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+        <p>Bronze/Silver/Gold medallion pipeline for streaming-media viewing events: dedup, watermark-based incremental processing, and a Gold-layer feature store (watch time, genre affinity, churn risk). Runs locally on PySpark + Delta Lake, with a parallel Snowflake SQL layer for a real warehouse.</p>
+        <div class="case-stack">
+          <span class="chip">PySpark</span><span class="chip">Delta Lake</span><span class="chip">Snowflake</span><span class="chip">Airflow</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-head">
+          <div class="project-title">Twitter Data Pipeline</div>
+          <a class="project-link" href="https://github.com/yash-master/Twitter-data-pipeline" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+        <p>Configurable ETL pipeline pulling tweets for multiple users and hashtags via the X API v2, orchestrated with an Airflow TaskFlow DAG, loaded idempotently into a database, with unit tests and CI.</p>
+        <div class="case-stack">
+          <span class="chip">Python</span><span class="chip">Tweepy (API v2)</span><span class="chip">Airflow</span><span class="chip">SQLAlchemy</span><span class="chip">pytest</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-head">
           <div class="project-title">Airbnb Price Prediction</div>
           <a class="project-link" href="https://github.com/yash-master/Airbnb-prediction-analysis" target="_blank" rel="noopener">GitHub &#8599;</a>
         </div>
@@ -626,12 +656,12 @@
       </div>
       <div class="project-card">
         <div class="project-head">
-          <div class="project-title">Twitter Data Pipeline</div>
-          <a class="project-link" href="https://github.com/yash-master/Twitter-data-pipeline" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <div class="project-title">Used Car Market Analysis</div>
+          <a class="project-link" href="https://github.com/yash-master/Used-car-analysis" target="_blank" rel="noopener">GitHub &#8599;</a>
         </div>
-        <p>Automated pipeline using the Tweepy API to pull tweet, engagement, and user data, orchestrated with Airflow and landed in Amazon S3.</p>
+        <p>Exploratory analysis of ~426K Craigslist vehicle listings: cleaning, outlier handling, and pricing patterns across manufacturer, age, and mileage.</p>
         <div class="case-stack">
-          <span class="chip">Python</span><span class="chip">Tweepy</span><span class="chip">Airflow</span><span class="chip">AWS S3</span>
+          <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">matplotlib</span><span class="chip">seaborn</span>
         </div>
       </div>
     </div>
